@@ -1,6 +1,7 @@
 import { ReactElement, useState, useEffect } from 'react'
 import { serializeFeedData, renderFeedData } from './Feed.helpers'
 import { IFeedData, IFeedResponse } from './Feed.types'
+import styles from './Feed.module.scss'
 
 export default function Feed(): ReactElement {
   const [feedData, setFeedData] = useState<IFeedData[]>([])
@@ -13,5 +14,5 @@ export default function Feed(): ReactElement {
 
   const feedDataSerialized = serializeFeedData(feedData)
 
-  return <div>{renderFeedData(feedDataSerialized)}</div>
+  return <div className={styles.Feed}>{renderFeedData(feedDataSerialized)}</div>
 }

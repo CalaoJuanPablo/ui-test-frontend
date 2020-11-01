@@ -1,6 +1,7 @@
 import { ReactElement } from 'react'
 import VotesBar from '../VotesBar/VotesBar'
 import { IFeedCard } from './FeedCard.types'
+import styles from './FeedCard.module.scss'
 
 export default function FeedCard({
   id,
@@ -11,11 +12,25 @@ export default function FeedCard({
   votesDistribution
 }: IFeedCard): ReactElement {
   return (
-    <article id={id} style={{ backgroundImage: `url(${image.src})` }}>
-      <h1>{name}</h1>
-      <span>1 month ago in {category}</span>
-      <p>{description}</p>
-      <VotesBar up={votesDistribution.up} down={votesDistribution.down} />
+    <article
+      className={styles.FeedCard}
+      id={id}
+      style={{ backgroundImage: `url(${image.src})` }}
+    >
+      <div className={styles.FeedCard__content}>
+        <div className={styles['FeedCard__content--title']}>
+          {/* <Thumbs /> */}
+          <h1>{name}</h1>
+        </div>
+        <span className={styles['FeedCard__content--category']}>
+          <b>1 month ago in</b> {category}
+        </span>
+        <p className={styles['FeedCard__content--description']}>
+          {description}
+        </p>
+        {/* <Vote /> */}
+        <VotesBar up={votesDistribution.up} down={votesDistribution.down} />
+      </div>
     </article>
   )
 }
