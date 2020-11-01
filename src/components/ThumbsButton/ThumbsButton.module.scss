@@ -1,9 +1,8 @@
 @import '../../../scss/variables.scss';
 
-.ThumbsIndicator {
+.ThumbsButton {
   width: 32px;
   height: 32px;
-  margin-bottom: 8px;
   color: white;
   flex-shrink: 0;
   display: flex;
@@ -11,12 +10,12 @@
   align-items: center;
 
   &--up {
-    @extend .ThumbsIndicator;
+    @extend .ThumbsButton;
     background-color: $main-thumbs-up;
   }
 
   &--down {
-    @extend .ThumbsIndicator;
+    @extend .ThumbsButton;
     background-color: $main-thumbs-down;
   }
 }

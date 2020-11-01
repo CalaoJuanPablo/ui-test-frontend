@@ -1,0 +1,18 @@
+.Vote {
+  margin-bottom: 32px;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  &--voter {
+    @extend .Vote;
+    display: grid;
+    grid-template-columns: 32px 32px 1fr;
+    justify-items: start;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &--vote_again {
+    @extend .Vote;
+  }
+}
