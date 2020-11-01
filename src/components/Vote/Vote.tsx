@@ -24,7 +24,7 @@ export default function Vote({
           selected={thumbSelected === 'down'}
           onClick={() => setThumbSelected('down')}
         />
-        <Button color="light" onClick={() => onVoteClick('up')}>
+        <Button color="light" onClick={() => onVoteClick(thumbSelected)}>
           Vote now
         </Button>
       </div>
