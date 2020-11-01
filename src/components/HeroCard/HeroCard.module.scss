@@ -1,0 +1,45 @@
+@import '../../../scss/variables.scss';
+
+.HeroCard {
+  margin-top: 64px;
+  max-width: 500px;
+  color: $white;
+
+  &__content {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(30px);
+    padding: 40px;
+  }
+
+  &__pre_title {
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  &__title {
+    font-size: 60px;
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+
+  &__description {
+    font-size: 21px;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    display: inline-block;
+    font-weight: 300;
+    margin-bottom: 16px;
+
+    &--text {
+      margin-left: 4px;
+      text-decoration: underline;
+    }
+  }
+
+  &__question {
+    font-size: 21px;
+  }
+}
