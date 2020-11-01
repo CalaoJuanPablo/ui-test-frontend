@@ -1,11 +1,8 @@
 import { ReactElement } from 'react'
 import Link from 'next/link'
 import Search from '../Search/Search'
+import { IHeader } from './Header.types'
 import styles from './Header.module.scss'
-
-interface IHeader {
-  isHome?: boolean
-}
 
 export default function Header({ isHome }: IHeader): ReactElement {
   function getHeaderClassName(homeVariant: boolean): string {
