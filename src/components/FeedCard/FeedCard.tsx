@@ -41,6 +41,7 @@ export default function FeedCard({
                 variant={
                   votesDistribution.up > votesDistribution.down ? 'up' : 'down'
                 }
+                readOnly
               />
             </div>
           )}

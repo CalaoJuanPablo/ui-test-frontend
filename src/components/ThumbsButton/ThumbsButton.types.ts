@@ -1,3 +1,7 @@
+export type TVariant = 'up' | 'down'
+
 export interface IThumbsButton {
-  variant?: 'up' | 'down'
+  variant?: TVariant
+  selected?: boolean
+  readOnly?: boolean
 }
