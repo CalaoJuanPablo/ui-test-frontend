@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import HeroVoter from '../HeroVoter/HeroVoter'
 import styles from './HeroCard.module.scss'
 
 export default function HeroCard(): ReactElement {
@@ -27,7 +28,7 @@ export default function HeroCard(): ReactElement {
         </a>
         <h4 className={styles.HeroCard__question}>What&apos;s Your Veredit?</h4>
       </div>
-      {/* <HeroVoter /> */}
+      <HeroVoter />
     </div>
   )
 }
