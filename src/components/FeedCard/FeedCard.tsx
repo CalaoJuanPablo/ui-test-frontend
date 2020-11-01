@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 import VotesBar from '../VotesBar/VotesBar'
+import ThumbsIndicator from '../ThumbsIndicator/ThumbsIndicator'
 import { IFeedCard } from './FeedCard.types'
 import styles from './FeedCard.module.scss'
 
@@ -19,7 +20,10 @@ export default function FeedCard({
     >
       <div className={styles.FeedCard__content}>
         <div className={styles['FeedCard__content--title']}>
-          {/* <Thumbs /> */}
+          <ThumbsIndicator
+            up={votesDistribution.up}
+            down={votesDistribution.down}
+          />
           <h1>{name}</h1>
         </div>
         <span className={styles['FeedCard__content--category']}>
