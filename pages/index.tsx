@@ -1,10 +1,10 @@
 import { ReactElement } from 'react'
-import MainLayout from '../src/layouts/main'
+import HomeLayout from '../src/layouts/home'
 
 export default function Home(): ReactElement {
   return (
-    <MainLayout>
+    <HomeLayout>
       <h1>Home</h1>
-    </MainLayout>
+    </HomeLayout>
   )
 }
