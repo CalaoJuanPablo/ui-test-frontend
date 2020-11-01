@@ -2,12 +2,13 @@
 
 .Hero {
   height: 100vh;
-  min-height: 700px;
-  max-height: 1080px;
+  min-height: 43.75rem;
+  max-height: 67.5rem;
   background-image: url('/assets/images/francisco.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  position: relative;
 
   &__container {
     @include container;

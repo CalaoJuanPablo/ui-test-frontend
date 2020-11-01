@@ -1,11 +1,11 @@
 @import '../../../scss/mixins.scss';
 
 .Footer {
-  font-size: 14px;
+  font-size: 0.875rem;
   &__container {
     border-top: 1px dashed black;
-    padding-top: 32px;
-    padding-bottom: 32px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     display: flex;
     justify-content: space-between;
     @include container();
@@ -17,7 +17,7 @@
     align-items: center;
 
     &--item {
-      margin-right: 32px;
+      margin-right: 2rem;
     }
   }
 
@@ -31,8 +31,8 @@
       align-items: center;
 
       &--item {
-        margin-left: 16px;
-        font-size: 32px;
+        margin-left: 1rem;
+        font-size: 2rem;
       }
     }
   }

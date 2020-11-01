@@ -1,8 +1,8 @@
 @import '../../../scss/mixins.scss';
 
 .Header {
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 
   &--home {
     color: white;
@@ -22,7 +22,7 @@
   }
 
   &__logo {
-    font-size: 32px;
+    font-size: 2rem;
   }
 
   &__menu {
@@ -31,7 +31,7 @@
     align-items: center;
 
     &--item {
-      margin-left: 32px;
+      margin-left: 2rem;
       font-weight: 300;
       &:hover {
         font-weight: 400;
