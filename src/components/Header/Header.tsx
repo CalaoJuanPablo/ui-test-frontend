@@ -2,9 +2,18 @@ import { ReactElement } from 'react'
 import Link from 'next/link'
 import styles from './Header.module.scss'
 
-export default function Header(): ReactElement {
+interface IHeader {
+  isHome?: boolean
+}
+
+export default function Header({ isHome }: IHeader): ReactElement {
+  function getHeaderClassName(homeVariant: boolean): string {
+    if (homeVariant) return `${styles.Header} ${styles['Header--home']}`
+    return styles.Header
+  }
+
   return (
-    <header className={styles.Header}>
+    <header className={getHeaderClassName(isHome)}>
       <div className={styles.Header__container}>
         <Link href="/">
           <a className={styles.Header__logo}>Rule Of Thumb.</a>

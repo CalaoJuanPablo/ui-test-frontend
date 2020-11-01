@@ -4,6 +4,16 @@
   padding-top: 32px;
   padding-bottom: 32px;
 
+  &--home {
+    color: white;
+    background-image: linear-gradient(
+      180deg,
+      rgba(51, 51, 51, 0.7),
+      rgba(51, 51, 51, 0.4) 40%,
+      rgba(51, 51, 51, 0)
+    );
+  }
+
   &__container {
     display: flex;
     justify-content: space-between;
@@ -13,7 +23,6 @@
 
   &__logo {
     font-size: 32px;
-    font-weight: bold;
   }
 
   &__menu {
@@ -23,8 +32,9 @@
 
     &--item {
       margin-left: 32px;
+      font-weight: 300;
       &:hover {
-        font-weight: bold;
+        font-weight: 400;
       }
     }
   }
