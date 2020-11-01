@@ -8,3 +8,11 @@
     width: calc(100% - 30px);
   }
 }
+
+@mixin createSoftOpacity($color) {
+  background-color: rgba($color, $alpha: 0.9);
+}
+
+@mixin createMidOpacity($color) {
+  background-color: rgba($color, $alpha: 0.7);
+}

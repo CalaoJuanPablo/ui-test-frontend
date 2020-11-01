@@ -1,0 +1,30 @@
+@import '../../../scss/variables.scss';
+
+.DescriptionBanner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: $gray;
+  padding: 16px 24px;
+
+  &__title {
+    width: 180px;
+    flex-shrink: 0;
+    h5 {
+      font-size: 18px;
+    }
+    h4 {
+      font-size: 32px;
+    }
+  }
+
+  &__description {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: 300;
+  }
+
+  &__close {
+    font-size: 24px;
+  }
+}
