@@ -3,7 +3,7 @@ import { IThumbsIndicator } from './ThumbsIndicator.types'
 import styles from './ThumbsIndicator.module.scss'
 
 export default function ThumbsIndicator({
-  variant
+  variant = 'up'
 }: IThumbsIndicator): ReactElement {
   return variant === 'up' ? (
     <div className={styles['ThumbsIndicator--up']}>
