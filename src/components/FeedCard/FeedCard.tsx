@@ -20,10 +20,13 @@ export default function FeedCard({
     >
       <div className={styles.FeedCard__content}>
         <div className={styles['FeedCard__content--title']}>
-          <ThumbsIndicator
-            up={votesDistribution.up}
-            down={votesDistribution.down}
-          />
+          {votesDistribution.up + votesDistribution.down === 100 && (
+            <ThumbsIndicator
+              variant={
+                votesDistribution.up > votesDistribution.down ? 'up' : 'down'
+              }
+            />
+          )}
           <h1>{name}</h1>
         </div>
         <span className={styles['FeedCard__content--category']}>

@@ -1,4 +1,3 @@
 export interface IThumbsIndicator {
-  up: number
-  down: number
+  variant: 'up' | 'down'
 }
