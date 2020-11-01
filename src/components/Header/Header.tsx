@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 import Link from 'next/link'
+import Search from '../Search/Search'
 import styles from './Header.module.scss'
 
 interface IHeader {
@@ -35,8 +36,10 @@ export default function Header({ isHome }: IHeader): ReactElement {
                 <a>Log In/Sign Up</a>
               </Link>
             </li>
+            <li className={styles['Header__menu--item']}>
+              <Search />
+            </li>
           </ul>
-          {/* Searcher */}
         </nav>
       </div>
     </header>
