@@ -11,7 +11,7 @@ export default function CustomHead({
   return (
     <Head>
       <title>{title}</title>
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/assets/logo/rules-of-thumbs-logo.svg" />
       <script
         src="https://kit.fontawesome.com/4079afdc3f.js"
         crossOrigin="anonymous"
