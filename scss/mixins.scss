@@ -1,0 +1,10 @@
+@import './mixins/breakpoints';
+
+@mixin container {
+  width: calc(100% - 20px);
+  max-width: 1200px;
+  margin: 0 auto;
+  @include media(sm) {
+    width: calc(100% - 30px);
+  }
+}

@@ -1,0 +1,31 @@
+@import '../../../scss/mixins.scss';
+
+.Header {
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include container();
+  }
+
+  &__logo {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  &__menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+
+    &--item {
+      margin-left: 32px;
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+}
