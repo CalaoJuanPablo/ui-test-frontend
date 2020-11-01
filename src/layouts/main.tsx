@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from 'react'
-import CustomHead from '../common/CustomHead'
+import CustomHead from '../common/components/CustomHead'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 

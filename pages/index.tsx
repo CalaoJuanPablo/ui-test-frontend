@@ -3,6 +3,7 @@ import HomeLayout from '../src/layouts/home'
 import Section from '../src/components/Section/Section'
 import Container from '../src/components/Container/Container'
 import DescriptionBanner from '../src/components/DescriptionBanner/DescriptionBanner'
+import FeedSection from '../src/components/FeedSection/FeedSection'
 
 export default function Home(): ReactElement {
   return (
@@ -13,6 +14,7 @@ export default function Home(): ReactElement {
             <DescriptionBanner />
           </Container>
         </Section>
+        <FeedSection />
       </main>
     </HomeLayout>
   )
