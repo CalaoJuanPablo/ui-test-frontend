@@ -1,0 +1,12 @@
+@import '../../../scss/mixins.scss';
+
+.Hero {
+  background-image: url('/assets/images/francisco.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__container {
+    @include container;
+  }
+}

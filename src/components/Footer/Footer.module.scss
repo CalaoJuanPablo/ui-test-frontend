@@ -1,0 +1,53 @@
+@import '../../../scss/mixins.scss';
+
+.Footer {
+  font-size: 0.875rem;
+  &__container {
+    border-top: 1px dashed black;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include container();
+  }
+
+  &__legal-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+    @include media(sm) {
+      flex-direction: row;
+    }
+
+    &--item {
+      margin-bottom: 0.5rem;
+
+      @include media(sm) {
+        margin-bottom: 0;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+
+    & > span {
+      flex-shrink: 0;
+    }
+
+    &-menu {
+      list-style: none;
+      display: flex;
+      align-items: center;
+
+      &--item {
+        margin-left: 1rem;
+        font-size: 2rem;
+      }
+    }
+  }
+}

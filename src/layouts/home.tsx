@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode } from 'react'
 import CustomHead from '../common/components/CustomHead'
-import Header from '../components/Header/Header'
+import Hero from '../components/Hero/Hero'
 import Footer from '../components/Footer/Footer'
 
 interface IMainLayout {
@@ -15,7 +15,7 @@ export default function MainLayout({
   return (
     <>
       <CustomHead title={title} />
-      <Header />
+      <Hero />
       {children}
       <Footer />
     </>

@@ -1,0 +1,12 @@
+@import '../../../scss/mixins.scss';
+
+.Feed {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 2.5rem;
+
+  @include media(md) {
+    grid-template-columns: 1fr 1fr;
+  }
+}

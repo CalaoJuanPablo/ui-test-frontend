@@ -1,0 +1,18 @@
+@import './mixins/breakpoints';
+
+@mixin container {
+  width: calc(100% - 1.5rem);
+  max-width: 62rem;
+  margin: 0 auto;
+  @include media(sm) {
+    width: calc(100% - 2rem);
+  }
+}
+
+@mixin createSoftOpacity($color) {
+  background-color: rgba($color, $alpha: 0.9);
+}
+
+@mixin createMidOpacity($color) {
+  background-color: rgba($color, $alpha: 0.7);
+}

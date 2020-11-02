@@ -1,0 +1,30 @@
+@import '../../../scss/variables.scss';
+
+.ThumbsButton {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--up {
+    @extend .ThumbsButton;
+    background-color: $main-thumbs-up;
+  }
+
+  &--down {
+    @extend .ThumbsButton;
+    background-color: $main-thumbs-down;
+  }
+
+  &--read_only {
+    cursor: auto;
+  }
+
+  &--selected {
+    border: 2px solid $white;
+  }
+}
