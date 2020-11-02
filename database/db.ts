@@ -1,4 +1,7 @@
 import { connectToDatabase } from '../utils/mongodb'
+import { ObjectID } from 'mongodb'
+
+export type TVoteRequest = 'up' | 'down'
 
 interface IVotes {
   up: number
@@ -44,6 +47,29 @@ class Database {
     }
   }
 
+  private buildUpdateObject(vote: TVoteRequest) {
+    if (vote === 'up') {
+      return {
+        $inc: {
+          'votes_distribution.up': 1
+        }
+      }
+    }
+    if (vote === 'down') {
+      return {
+        $inc: {
+          'votes_distribution.down': 1
+        }
+      }
+    }
+    return {
+      $inc: {
+        'votes_distribution.up': 0,
+        'votes_distribution.down': 0
+      }
+    }
+  }
+
   async getAll(): Promise<IFeedData[]> {
     const { db } = await connectToDatabase()
 
@@ -67,6 +93,61 @@ class Database {
 
     return personalitiesReturn
   }
+
+  async getById(personalityId: string): Promise<IFeedData> {
+    const { db } = await connectToDatabase()
+
+    const personality: IPersonality = await db
+      .collection('personalities')
+      .findOne({ _id: ObjectID(personalityId) })
+
+    if (!personality) throw new Error('Not Personality Found')
+
+    const { _id: id, ...rest } = personality
+
+    return {
+      ...rest,
+      id,
+      votes_distribution: this.calculateVotesDistributionPercentages(
+        personality.votes_distribution.up,
+        personality.votes_distribution.down
+      )
+    }
+  }
+
+  async updateById(
+    personalityId: string,
+    vote: TVoteRequest
+  ): Promise<IFeedData> {
+    const { db } = await connectToDatabase()
+    const query = { _id: ObjectID(personalityId) }
+
+    const update = this.buildUpdateObject(vote)
+    const options = { returnOriginal: false }
+
+    const updateResponse = await db
+      .collection('personalities')
+      .findOneAndUpdate(query, update, options)
+
+    const { value: personality }: { value: IPersonality } = await updateResponse
+
+    if (!personality) throw new Error('Not Personality Found')
+
+    const { _id: id, ...rest } = personality
+
+    const personalityResponse = {
+      ...rest,
+      id,
+      votes_distribution: this.calculateVotesDistributionPercentages(
+        personality.votes_distribution.up,
+        personality.votes_distribution.down
+      )
+    }
+
+    return personalityResponse
+  }
 }
 
-export default Database
+const db = new Database()
+
+export default db
