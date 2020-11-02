@@ -6,7 +6,7 @@ export default function Footer(): ReactElement {
   return (
     <footer className={styles.Footer}>
       <div className={styles.Footer__container}>
-        <nav>
+        <nav className={styles['Footer__legal_nav']}>
           <ul className={styles['Footer__legal-menu']}>
             <li className={styles['Footer__legal-menu--item']}>
               <Link href="/terms">

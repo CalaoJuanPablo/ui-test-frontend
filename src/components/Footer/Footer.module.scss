@@ -8,22 +8,36 @@
     padding-bottom: 2rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     @include container();
   }
 
   &__legal-menu {
     list-style: none;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+
+    @include media(sm) {
+      flex-direction: row;
+    }
 
     &--item {
-      margin-right: 2rem;
+      margin-bottom: 0.5rem;
+
+      @include media(sm) {
+        margin-bottom: 0;
+        margin-left: 1rem;
+      }
     }
   }
 
   &__social {
     display: flex;
     align-items: center;
+
+    & > span {
+      flex-shrink: 0;
+    }
 
     &-menu {
       list-style: none;
