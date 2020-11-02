@@ -1,4 +1,3 @@
-import allData from './data'
 import { connectToDatabase } from '../utils/mongodb'
 
 interface IVotes {
