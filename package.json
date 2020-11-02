@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "mongodb": "^3.6.2",
     "next": "10.0.0",
     "prettier-eslint": "^11.0.0",
     "prettier-eslint-cli": "^5.0.0",

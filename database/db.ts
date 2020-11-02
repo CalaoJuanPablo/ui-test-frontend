@@ -1,4 +1,22 @@
 import allData from './data'
+import { connectToDatabase } from '../utils/mongodb'
+
+interface IVotes {
+  up: number
+  down: number
+}
+
+interface IPersonality {
+  _id: string
+  name: string
+  image: {
+    src: string
+    alt: string
+  }
+  category: string
+  description: string
+  votes_distribution: IVotes
+}
 
 export interface IFeedData {
   id: string
@@ -9,37 +27,47 @@ export interface IFeedData {
   }
   category: string
   description: string
-  votes_distribution: {
-    up: number
-    down: number
-  }
+  votes_distribution: IVotes
 }
 
 class Database {
-  async getAll(): Promise<IFeedData[]> {
-    const asArray = Object.values(allData)
-    await randomDelay()
-    return asArray
+  private calculateVotesDistributionPercentages(
+    votesUp: number,
+    votesDown: number
+  ): IVotes {
+    const total = votesUp + votesDown
+    const upPercentage = Math.round((votesUp / total) * 100)
+    const downPercentage = 100 - upPercentage
+
+    return {
+      up: upPercentage,
+      down: downPercentage
+    }
   }
 
-  async getById(id: string): Promise<IFeedData | null> {
-    if (!Object.prototype.hasOwnProperty.call(allData, id)) {
-      return null
-    }
+  async getAll(): Promise<IFeedData[]> {
+    const { db } = await connectToDatabase()
 
-    const entry = allData[id]
-    await randomDelay()
-    return entry
+    const personalities: IPersonality[] = await db
+      .collection('personalities')
+      .find({})
+      .toArray()
+
+    const personalitiesReturn: IFeedData[] = personalities.map(personality => {
+      const { _id: id, ...rest } = personality
+
+      return {
+        ...rest,
+        id,
+        votes_distribution: this.calculateVotesDistributionPercentages(
+          personality.votes_distribution.up,
+          personality.votes_distribution.down
+        )
+      }
+    })
+
+    return personalitiesReturn
   }
 }
-
-const randomDelay = () =>
-  new Promise(resolve => {
-    const max = 350
-    const min = 100
-    const delay = Math.floor(Math.random() * (max - min + 1)) + min
-
-    setTimeout(resolve, delay)
-  })
 
 export default Database
