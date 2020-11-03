@@ -1,6 +1,8 @@
 // Dependencies
 import { ReactElement, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+// Utilities
+import { personalitiesActions } from '../../redux/slices/personalities/personalities.slice'
 // Components
 import VotesBar from '../VotesBar/VotesBar.component'
 import ThumbsButton from '../ThumbsButton/ThumbsButton.component'
@@ -16,6 +18,7 @@ import styles from './FeedCard.module.scss'
 
 export default function FeedCard({ id }: IFeedCard): ReactElement {
   const [hasVoted, setHasVoted] = useState<boolean>(false)
+  const dispatch = useDispatch()
 
   const {
     name,
@@ -28,9 +31,7 @@ export default function FeedCard({ id }: IFeedCard): ReactElement {
   )
 
   const handleVoteClick = (id: string) => (vote: TVote) => {
-    console.log('ID:', id)
-    console.log('VOTE:', vote)
-
+    dispatch(personalitiesActions.updateById({ personalityId: id, vote }))
     setHasVoted(true)
   }
 
