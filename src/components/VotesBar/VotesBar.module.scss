@@ -1,0 +1,37 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.VotesBar {
+  width: 100%;
+  height: 3rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 300;
+  &__bar--up {
+    height: 100%;
+    padding-left: 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    @include createMidOpacity($main-thumbs-up);
+
+    span {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &__bar--down {
+    height: 100%;
+    padding-right: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    @include createMidOpacity($main-thumbs-down);
+
+    span {
+      margin-right: 0.5rem;
+    }
+  }
+}

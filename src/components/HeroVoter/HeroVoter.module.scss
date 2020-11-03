@@ -1,0 +1,30 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+@mixin heroVoterButton($color) {
+  cursor: pointer;
+  height: 100%;
+  flex: 1;
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  @include createSoftOpacity($color);
+}
+
+.HeroVoter {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+
+  &__button {
+    &--up {
+      @include heroVoterButton($main-thumbs-up);
+    }
+
+    &--down {
+      @include heroVoterButton($main-thumbs-down);
+    }
+  }
+}
