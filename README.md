@@ -69,3 +69,5 @@ I designed a logo for the app. The logo is in `public/assets/logo/rules-of-thumb
 All frontend code (besides the pages routes) is in `src` directory.
 
 All routes inside `pages/api` are the API routes.
+
+The bottom votes percentage bar does not render until the first vote up or down (See Mark Zuckerberg card on Production environment).
