@@ -1,42 +1,20 @@
-import { connectToDatabase } from './mongodb'
+// Dependencies
 import { ObjectID } from 'mongodb'
-
-export type TVoteRequest = 'up' | 'down'
-
-interface IVotes {
-  up: number
-  down: number
-}
-
-interface IPersonality {
-  _id: string
-  name: string
-  image: {
-    src: string
-    alt: string
-  }
-  category: string
-  description: string
-  votes_distribution: IVotes
-}
-
-export interface IFeedData {
-  id: string
-  name: string
-  image: {
-    src: string
-    alt: string
-  }
-  category: string
-  description: string
-  votes_distribution: IVotes
-}
+// Utilities
+import { connectToDatabase } from './mongodb'
+// Types
+import {
+  IVotesDistribution,
+  TVote,
+  IPersonalityInDB,
+  IPersonality
+} from './db.types'
 
 class Database {
   private calculateVotesDistributionPercentages(
     votesUp: number,
     votesDown: number
-  ): IVotes {
+  ): IVotesDistribution {
     const total = votesUp + votesDown
     const upPercentage = Math.round((votesUp / total) * 100)
     const downPercentage = 100 - upPercentage
@@ -47,7 +25,7 @@ class Database {
     }
   }
 
-  private buildUpdateObject(vote: TVoteRequest) {
+  private buildUpdateObject(vote: TVote) {
     if (vote === 'up') {
       return {
         $inc: {
@@ -70,34 +48,36 @@ class Database {
     }
   }
 
-  async getAll(): Promise<IFeedData[]> {
+  async getAll(): Promise<IPersonality[]> {
     const { db } = await connectToDatabase()
 
-    const personalities: IPersonality[] = await db
+    const personalities: IPersonalityInDB[] = await db
       .collection('personalities')
       .find({})
       .toArray()
 
-    const personalitiesReturn: IFeedData[] = personalities.map(personality => {
-      const { _id: id, ...rest } = personality
+    const personalitiesReturn: IPersonality[] = personalities.map(
+      personality => {
+        const { _id: id, ...rest } = personality
 
-      return {
-        ...rest,
-        id,
-        votes_distribution: this.calculateVotesDistributionPercentages(
-          personality.votes_distribution.up,
-          personality.votes_distribution.down
-        )
+        return {
+          ...rest,
+          id,
+          votes_distribution: this.calculateVotesDistributionPercentages(
+            personality.votes_distribution.up,
+            personality.votes_distribution.down
+          )
+        }
       }
-    })
+    )
 
     return personalitiesReturn
   }
 
-  async getById(personalityId: string): Promise<IFeedData> {
+  async getById(personalityId: string): Promise<IPersonality> {
     const { db } = await connectToDatabase()
 
-    const personality: IPersonality = await db
+    const personality: IPersonalityInDB = await db
       .collection('personalities')
       .findOne({ _id: new ObjectID(personalityId) })
 
@@ -115,13 +95,10 @@ class Database {
     }
   }
 
-  async updateById(
-    personalityId: string,
-    vote: TVoteRequest
-  ): Promise<IFeedData> {
+  async updateById(personalityId: string, vote: TVote): Promise<IPersonality> {
     const { db } = await connectToDatabase()
-    const query = { _id: new ObjectID(personalityId) }
 
+    const query = { _id: new ObjectID(personalityId) }
     const update = this.buildUpdateObject(vote)
     const options = { returnOriginal: false }
 
@@ -129,7 +106,9 @@ class Database {
       .collection('personalities')
       .findOneAndUpdate(query, update, options)
 
-    const { value: personality }: { value: IPersonality } = await updateResponse
+    const {
+      value: personality
+    }: { value: IPersonalityInDB } = await updateResponse
 
     if (!personality) throw new Error('Not Personality Found')
 
