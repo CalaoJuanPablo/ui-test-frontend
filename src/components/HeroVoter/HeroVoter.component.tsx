@@ -1,4 +1,6 @@
+// Dependencies
 import { ReactElement } from 'react'
+// Styles
 import styles from './HeroVoter.module.scss'
 
 export default function HeroVoter(): ReactElement {

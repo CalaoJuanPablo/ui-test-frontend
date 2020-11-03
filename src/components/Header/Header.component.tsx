@@ -1,7 +1,10 @@
+// Dependencies
 import { ReactElement } from 'react'
 import Link from 'next/link'
-import Search from '../Search/Search'
+// Components
+import Search from '../Search/Search.component'
 import { IHeader } from './Header.types'
+// Styles
 import styles from './Header.module.scss'
 
 export default function Header({ isHome }: IHeader): ReactElement {

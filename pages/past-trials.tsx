@@ -1,6 +1,9 @@
+// Dependencies
 import { ReactElement } from 'react'
-import Main from '../src/layouts/main'
-import Container from '../src/components/Container/Container'
+// Layout
+import Main from '../src/layouts/main.layout'
+// Components
+import Container from '../src/components/Container/Container.component'
 
 export default function PastTrials(): ReactElement {
   return (

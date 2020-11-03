@@ -1,5 +1,8 @@
+// Dependencies
 import { ReactElement } from 'react'
+// Types
 import { IVotes } from './VotesBar.types'
+// Styles
 import styles from './VotesBar.module.scss'
 
 export default function VotesBar({ up, down }: IVotes): ReactElement {

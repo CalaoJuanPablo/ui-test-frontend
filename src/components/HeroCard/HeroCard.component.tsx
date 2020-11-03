@@ -1,5 +1,8 @@
+// Dependencies
 import { ReactElement } from 'react'
-import HeroVoter from '../HeroVoter/HeroVoter'
+// Components
+import HeroVoter from '../HeroVoter/HeroVoter.component'
+// Styles
 import styles from './HeroCard.module.scss'
 
 export default function HeroCard(): ReactElement {

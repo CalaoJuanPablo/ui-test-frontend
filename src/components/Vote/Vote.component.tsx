@@ -1,8 +1,14 @@
+// Dependencies
 import { ReactElement, useState } from 'react'
-import Button from '../Button/Button'
-import { IVote, TVote } from './Vote.types'
+// Components
+import Button from '../Button/Button.component'
+import ThumbsButton from '../ThumbsButton/ThumbsButton.component'
+// Common Types
+import { TVote } from '../../common/types/vote.types'
+// Types
+import { IVote } from './Vote.types'
+// Styles
 import styles from './Vote.module.scss'
-import ThumbsButton from '../ThumbsButton/ThumbsButton'
 
 export default function Vote({
   showVoter,

@@ -1,7 +1,10 @@
+// Dependencies
 import { ReactElement, ReactNode } from 'react'
-import CustomHead from '../common/components/CustomHead'
-import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
+// Common Components
+import CustomHead from '../common/components/CustomHead.components'
+// Components
+import Hero from '../components/Hero/Hero.component'
+import Footer from '../components/Footer/Footer.component'
 
 interface IMainLayout {
   title?: string
@@ -15,7 +18,7 @@ export default function MainLayout({
   return (
     <>
       <CustomHead title={title} />
-      <Header />
+      <Hero />
       {children}
       <Footer />
     </>

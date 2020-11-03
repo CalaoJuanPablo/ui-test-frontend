@@ -1,4 +1,6 @@
+// Dependencies
 import { ReactElement } from 'react'
+// Components
 import styles from './HeroBottomBanner.module.scss'
 
 export default function HeroBottomBanner(): ReactElement {

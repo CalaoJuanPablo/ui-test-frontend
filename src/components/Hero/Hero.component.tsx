@@ -1,7 +1,10 @@
+// Dependencies
 import { ReactElement } from 'react'
-import Header from '../Header/Header'
+// Components
+import Header from '../Header/Header.component'
 import HeroBottomBanner from '../HeroBottomBanner/HeroBottomBanner.component'
-import HeroCard from '../HeroCard/HeroCard'
+import HeroCard from '../HeroCard/HeroCard.component'
+// Styles
 import styles from './Hero.module.scss'
 
 export default function Hero(): ReactElement {

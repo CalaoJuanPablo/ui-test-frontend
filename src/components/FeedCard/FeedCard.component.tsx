@@ -1,13 +1,18 @@
+// Dependencies
 import { ReactElement, useState } from 'react'
 import { useSelector } from 'react-redux'
-import VotesBar from '../VotesBar/VotesBar'
-import ThumbsButton from '../ThumbsButton/ThumbsButton'
-import Vote from '../Vote/Vote'
+// Components
+import VotesBar from '../VotesBar/VotesBar.component'
+import ThumbsButton from '../ThumbsButton/ThumbsButton.component'
+import Vote from '../Vote/Vote.component'
+// Common Types
+import { TVote } from '../../common/types/vote.types'
+// Types
 import { IFeedCard } from './FeedCard.types'
-import { TVote } from '../Vote/Vote.types'
-import styles from './FeedCard.module.scss'
-import { IGlobalState } from 'src/redux/store'
+import { IGlobalState } from 'src/redux/store.types'
 import { IPersonality } from 'src/redux/slices/personalities/personalities.types'
+// Styles
+import styles from './FeedCard.module.scss'
 
 export default function FeedCard({ id }: IFeedCard): ReactElement {
   const [hasVoted, setHasVoted] = useState<boolean>(false)

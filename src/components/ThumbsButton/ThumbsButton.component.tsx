@@ -1,5 +1,8 @@
+// Dependencies
 import { ReactElement } from 'react'
+// Utils
 import { buildThumbsButtonClassName } from './ThumbsButton.helpers'
+// Types
 import { IThumbsButton } from './ThumbsButton.types'
 
 export default function ThumbsButton({

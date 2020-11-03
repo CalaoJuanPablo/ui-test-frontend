@@ -1,4 +1,6 @@
+// Dependencies
 import { ReactElement } from 'react'
+// Styles
 import styles from './DescriptionBanner.module.scss'
 
 export default function DescriptionBanner(): ReactElement {

@@ -1,7 +1,10 @@
+// Dependencies
 import { ReactElement } from 'react'
-import Container from '../Container/Container'
-import Section from '../Section/Section'
-import Button from '../Button/Button'
+// Components
+import Container from '../Container/Container.component'
+import Section from '../Section/Section.component'
+import Button from '../Button/Button.component'
+// Styles
 import styles from './ProposalBanner.module.scss'
 
 export default function ProposalBanner(): ReactElement {

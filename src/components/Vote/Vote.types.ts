@@ -1,4 +1,4 @@
-export type TVote = 'up' | 'down'
+import { TVote } from '../../common/types/vote.types'
 
 export interface IVote {
   showVoter: boolean
