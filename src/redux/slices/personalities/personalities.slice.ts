@@ -1,9 +1,4 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  PayloadAction,
-  ActionReducerMapBuilder
-} from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import personalitiesService from '../../../services/personalities/personalities.service'
 import { IPersonalitiesState, IPersonality } from './personalities.types'
 
@@ -48,7 +43,7 @@ const personalitiesSlice = createSlice({
   name: 'personalities',
   initialState,
   reducers: {},
-  extraReducers: (builder: ActionReducerMapBuilder<IPersonalitiesState>) => {
+  extraReducers: builder => {
     builder.addCase(getAllPersonalities.pending, state => {
       state.isLoading = true
       state.error = null
@@ -110,3 +105,11 @@ const personalitiesSlice = createSlice({
     })
   }
 })
+
+export default personalitiesSlice.reducer
+
+export const personalitiesActions = {
+  getAll: getAllPersonalities,
+  getById: getPersonalitiesById,
+  updateById: updatePersonalitiesById
+}
