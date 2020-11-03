@@ -15,6 +15,13 @@ class Database {
     votesUp: number,
     votesDown: number
   ): IVotesDistribution {
+    if (votesUp === 0 && votesDown === 0) {
+      return {
+        up: 0,
+        down: 0
+      }
+    }
+
     const total = votesUp + votesDown
     const upPercentage = Math.round((votesUp / total) * 100)
     const downPercentage = 100 - upPercentage
