@@ -4,9 +4,7 @@ import { IPersonalitiesState, IPersonality } from './personalities.types'
 
 const initialState: IPersonalitiesState = {
   entities: {},
-  ids: [],
-  isLoading: false,
-  error: null
+  ids: []
 }
 
 const getAllPersonalities = createAsyncThunk(
@@ -44,11 +42,6 @@ const personalitiesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(getAllPersonalities.pending, state => {
-      state.isLoading = true
-      state.error = null
-    })
-
     builder.addCase(getAllPersonalities.fulfilled, (state, action) => {
       const byId = action.payload.reduce((obj, personality) => {
         obj[personality.id] = personality
@@ -57,18 +50,6 @@ const personalitiesSlice = createSlice({
 
       state.entities = byId
       state.ids = Object.keys(byId)
-      state.isLoading = false
-      state.error = null
-    })
-
-    builder.addCase(getAllPersonalities.rejected, state => {
-      state.isLoading = false
-      state.error = 'Error fetching the data'
-    })
-
-    builder.addCase(getPersonalitiesById.pending, state => {
-      state.isLoading = true
-      state.error = null
     })
 
     builder.addCase(getPersonalitiesById.fulfilled, (state, action) => {
@@ -76,18 +57,6 @@ const personalitiesSlice = createSlice({
       if (indexInIds === -1) state.ids.push(action.payload.id)
 
       state.entities[action.payload.id] = action.payload
-      state.isLoading = false
-      state.error = null
-    })
-
-    builder.addCase(getPersonalitiesById.rejected, state => {
-      state.isLoading = false
-      state.error = 'Error fetching the data'
-    })
-
-    builder.addCase(updatePersonalitiesById.pending, state => {
-      state.isLoading = true
-      state.error = null
     })
 
     builder.addCase(updatePersonalitiesById.fulfilled, (state, action) => {
@@ -95,13 +64,6 @@ const personalitiesSlice = createSlice({
       if (indexInIds === -1) state.ids.push(action.payload.id)
 
       state.entities[action.payload.id] = action.payload
-      state.isLoading = false
-      state.error = null
-    })
-
-    builder.addCase(updatePersonalitiesById.rejected, state => {
-      state.isLoading = false
-      state.error = 'Error updating the data'
     })
   }
 })

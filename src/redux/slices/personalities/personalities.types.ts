@@ -16,6 +16,4 @@ export interface IPersonality {
 export interface IPersonalitiesState {
   entities: { [id: string]: IPersonality }
   ids: Array<string>
-  isLoading: boolean
-  error: string | null
 }
