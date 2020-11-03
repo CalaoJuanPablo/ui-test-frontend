@@ -1,9 +1,11 @@
 import { ReactElement } from 'react'
 import FeedCard from '../FeedCard/FeedCard'
 import { IFeedCard } from '../FeedCard/FeedCard.types'
-import { IFeedData } from './Feed.types'
+import { IPersonalityData } from '../../services/personalities/personalities.types'
 
-export function serializeFeedData(rawData: Array<IFeedData>): Array<IFeedCard> {
+export function serializeFeedData(
+  rawData: Array<IPersonalityData>
+): Array<IFeedCard> {
   return rawData.map(element => ({
     id: element.id,
     name: element.name,

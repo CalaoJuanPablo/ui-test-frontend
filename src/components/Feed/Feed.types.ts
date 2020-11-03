@@ -1,4 +1,4 @@
-export interface IFeedData {
+export interface IPersonalityData {
   id: string
   name: string
   image: {
@@ -13,7 +13,7 @@ export interface IFeedData {
   }
 }
 
-export interface IFeedResponse {
+export interface IPersonalitiesResponse {
   length: number
-  data: Array<IFeedData>
+  data: Array<IPersonalityData>
 }
