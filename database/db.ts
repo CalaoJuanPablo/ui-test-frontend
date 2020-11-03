@@ -1,4 +1,4 @@
-import { connectToDatabase } from '../utils/mongodb'
+import { connectToDatabase } from './mongodb'
 import { ObjectID } from 'mongodb'
 
 export type TVoteRequest = 'up' | 'down'
@@ -99,7 +99,7 @@ class Database {
 
     const personality: IPersonality = await db
       .collection('personalities')
-      .findOne({ _id: ObjectID(personalityId) })
+      .findOne({ _id: new ObjectID(personalityId) })
 
     if (!personality) throw new Error('Not Personality Found')
 
@@ -120,7 +120,7 @@ class Database {
     vote: TVoteRequest
   ): Promise<IFeedData> {
     const { db } = await connectToDatabase()
-    const query = { _id: ObjectID(personalityId) }
+    const query = { _id: new ObjectID(personalityId) }
 
     const update = this.buildUpdateObject(vote)
     const options = { returnOriginal: false }
