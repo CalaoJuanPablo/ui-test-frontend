@@ -1,6 +1,11 @@
 import { useMemo } from 'react'
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, Reducer } from '@reduxjs/toolkit'
 import personalitiesReducer from './slices/personalities/personalities.slice'
+import { IPersonalitiesState } from './slices/personalities/personalities.types'
+
+export interface IGlobalState {
+  personalities: IPersonalitiesState
+}
 
 let store
 

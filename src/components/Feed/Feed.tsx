@@ -1,18 +1,20 @@
-import { ReactElement, useState, useEffect } from 'react'
-import { serializeFeedData, renderFeedData } from './Feed.helpers'
-import { IPersonalitiesResponse, IPersonalityData } from './Feed.types'
+import { ReactElement, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { personalitiesActions } from '../../redux/slices/personalities/personalities.slice'
+import { renderFeedData } from './Feed.helpers'
 import styles from './Feed.module.scss'
+import { IGlobalState } from 'src/redux/store'
+import { IPersonalitiesState } from 'src/redux/slices/personalities/personalities.types'
 
 export default function Feed(): ReactElement {
-  const [feedData, setFeedData] = useState<IPersonalityData[]>([])
+  const dispatch = useDispatch()
+  const { ids: personalitiesIds } = useSelector(
+    (state: IGlobalState): IPersonalitiesState => state.personalities
+  )
 
   useEffect(() => {
-    fetch('/api/feed')
-      .then(response => response.json())
-      .then(({ data }: IPersonalitiesResponse) => setFeedData(data))
-  })
+    dispatch(personalitiesActions.getAll())
+  }, [])
 
-  const feedDataSerialized = serializeFeedData(feedData)
-
-  return <div className={styles.Feed}>{renderFeedData(feedDataSerialized)}</div>
+  return <div className={styles.Feed}>{renderFeedData(personalitiesIds)}</div>
 }
