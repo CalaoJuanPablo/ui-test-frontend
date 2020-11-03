@@ -65,7 +65,7 @@ export default function FeedCard({ id }: IFeedCard): ReactElement {
           <b>1 month ago in</b> {category}
         </span>
         <p className={styles['FeedCard__content--description']}>
-          {description}
+          {hasVoted ? 'Thank you for voting!' : description}
         </p>
         <Vote
           showVoter={!hasVoted}
