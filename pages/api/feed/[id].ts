@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { NextApiRequest, NextApiResponse } from 'next'
-import db, { TVoteRequest } from '@database'
+import db from '@database'
+
+type TVoteRequest = 'up' | 'down'
 
 const getAllFeedData = async (
   request: NextApiRequest,
